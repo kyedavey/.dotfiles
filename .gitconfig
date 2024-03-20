@@ -1,0 +1,11 @@
+[user]
+	name = Kye Davey
+	email = kye.j.davey@gmail.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[color]
+	ui = auto
+[core]
+	editor = code --wait
