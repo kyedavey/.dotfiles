@@ -4,40 +4,60 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# ------------------------------ history -----------------------------
+
 HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+shopt -s histappend
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# ------------------------ bash shell options ------------------------
+
 shopt -s checkwinsize
 
-# Set Prompt
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# -----------------------------set prompt-----------------------------
 
-# Aliases
+__ps1() {
+  EXIT="$?"
+  BLUE='\[\e[34m\]'
+  RED='\[\e[31m\]'
+  GREEN='\[\e[32m\]'
+  GREY='\[\e[90m\]'
+  MAGENTA='\[\e[35m\]'
+  COLOR_NONE='\[\e[0m\]'
+  
+  [[ -n $SSH_CLIENT ]] && HOST="$GREEN\u$GREY at $GREEN\h$GREY in "
+  [[ $UID == 0 ]]  && HOST="$RED\u$GREY at $GREEN\h$GREY in "
+
+	DIR="${BLUE}\w"
+
+  GIT_PS1_SHOWUPSTREAM="auto"
+  GIT_PS1_SHOWDIRTYSTATE=1
+  GIT_PS1_SHOWSTASHSTATE=1
+  GIT_PS1_STATESEPARATOR=" "
+  
+  # GIT_INFO="$GREY$(git branch --show-current 2>/dev/null)"
+  GIT_INFO="$(__git_ps1 "$GREY on $GREEN(%s)")"
+
+  if [ $EXIT = 0 ] ; then
+    PROMPT_SIGN="${GREEN}❯${COLOR_NONE} "
+  else
+    PROMPT_SIGN="${RED}x${COLOR_NONE} "
+  fi
+
+	PS1="\n$HOST$DIR$GIT_INFO\n$PROMPT_SIGN"
+}
+
+PROMPT_COMMAND="__ps1"
+
+# ------------------------------ aliases -----------------------------
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
