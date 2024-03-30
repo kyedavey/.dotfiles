@@ -1,4 +1,4 @@
-git clone --bare git@github.com:kyedavey/.dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/kyedavey/.dotfiles.git $HOME/.dotfiles
 mkdir -p .dotfiles-backup
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 if [ $? = 0 ]; then
