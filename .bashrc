@@ -30,17 +30,14 @@ __ps1() {
   [[ $UID == 0 ]]  && HOST="$RED\u$GREY at $GREEN\h$GREY in "
 
 	DIR="${BLUE}\w"
-
-  GIT_PS1_SHOWUPSTREAM="auto"
-  GIT_PS1_SHOWDIRTYSTATE=1
-  GIT_PS1_SHOWSTASHSTATE=1
-  GIT_PS1_STATESEPARATOR=" "
   
   GIT_BRANCH="$(git branch --show-current 2>/dev/null)"
   if [[ "$(git status -s 2> /dev/null)" ]]; then
-    GIT_SYMBOL="*"
+    GIT_COLOUR="$RED"
+  else
+    GIT_COLOUR="$GREEN"
   fi
-  GIT_INFO="$GREY on $GREEN$GIT_BRANCH$GREY$GIT_SYMBOL"
+  GIT_INFO="$GREY on $GIT_COLOUR$GIT_BRANCH"
 
   if [ $EXIT = 0 ] ; then
     PROMPT_SIGN="${GREEN}❯${COLOR_NONE} "
