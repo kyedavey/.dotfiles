@@ -42,7 +42,7 @@ __ps1() {
   if [ $EXIT = 0 ] ; then
     PROMPT_SIGN="${GREEN}❯${COLOR_NONE} "
   else
-    PROMPT_SIGN="${RED}x${COLOR_NONE} "
+    PROMPT_SIGN="${RED}❯${COLOR_NONE} "
   fi
 
   if [ ! -z "$GIT_BRANCH" ]; then
