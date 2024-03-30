@@ -36,8 +36,11 @@ __ps1() {
   GIT_PS1_SHOWSTASHSTATE=1
   GIT_PS1_STATESEPARATOR=" "
   
-  # GIT_INFO="$GREY$(git branch --show-current 2>/dev/null)"
-  GIT_INFO="$(__git_ps1 "$GREY on $GREEN(%s)")"
+  GIT_BRANCH="$(git branch --show-current 2>/dev/null)"
+  if [[ "$(git status -s 2> /dev/null)" ]]; then
+    GIT_SYMBOL="*"
+  fi
+  GIT_INFO="$GREY on $GREEN$GIT_BRANCH$GREY$GIT_SYMBOL"
 
   if [ $EXIT = 0 ] ; then
     PROMPT_SIGN="${GREEN}❯${COLOR_NONE} "
@@ -45,7 +48,11 @@ __ps1() {
     PROMPT_SIGN="${RED}x${COLOR_NONE} "
   fi
 
-	PS1="\n$HOST$DIR$GIT_INFO\n$PROMPT_SIGN"
+  if [ ! -z "$GIT_BRANCH" ]; then
+	  PS1="$HOST$DIR$GIT_INFO $PROMPT_SIGN"
+  else
+    PS1="$HOST$DIR $PROMPT_SIGN"
+  fi
 }
 
 PROMPT_COMMAND="__ps1"
