@@ -23,10 +23,9 @@ __ps1() {
   RED='\[\e[31m\]'
   GREEN='\[\e[32m\]'
   GREY='\[\e[90m\]'
-  MAGENTA='\[\e[35m\]'
   COLOR_NONE='\[\e[0m\]'
   
-  [[ -n $SSH_CLIENT ]] && HOST="$GREEN\u$GREY at $GREEN\h$GREY in "
+  [[ $SSH_CLIENT ]] && HOST="$GREEN\u$GREY at $GREEN\h$GREY in "
   [[ $UID == 0 ]]  && HOST="$RED\u$GREY at $GREEN\h$GREY in "
 
 	DIR="${BLUE}\w"
@@ -45,7 +44,7 @@ __ps1() {
     PROMPT_SIGN="${RED}❯${COLOR_NONE} "
   fi
 
-  if [ ! -z "$GIT_BRANCH" ]; then
+  if [[ "$GIT_BRANCH" ]]; then
 	  PS1="$HOST$DIR$GIT_INFO $PROMPT_SIGN"
   else
     PS1="$HOST$DIR $PROMPT_SIGN"
