@@ -9,3 +9,4 @@ else
 fi;
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config status.showUntrackedFiles no
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME remote set-url origin git@github.com:kyedavey/.dotfiles.git
