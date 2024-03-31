@@ -49,6 +49,8 @@ __ps1() {
   else
     PS1="$HOST$DIR $PROMPT_SIGN"
   fi
+
+  PS2="${GREEN}❯"
 }
 
 PROMPT_COMMAND="__ps1"
