@@ -1,0 +1,37 @@
+[
+    (
+        output: (
+            name: "Virtual-1",
+            edid: None,
+        ),
+        tiling_enabled: true,
+    ),
+    (
+        output: (
+            name: "Virtual-1",
+            edid: None,
+        ),
+        tiling_enabled: true,
+    ),
+    (
+        output: (
+            name: "Virtual-1",
+            edid: None,
+        ),
+        tiling_enabled: true,
+    ),
+    (
+        output: (
+            name: "Virtual-1",
+            edid: None,
+        ),
+        tiling_enabled: true,
+    ),
+    (
+        output: (
+            name: "Virtual-1",
+            edid: None,
+        ),
+        tiling_enabled: true,
+    ),
+]
