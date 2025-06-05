@@ -5,7 +5,7 @@
 set -e
 
 # Default values
-DOTFILES_DIR="$HOME/code/dotfiles"
+DOTFILES_DIR=$(dirname "${BASH_SOURCE[0]}")
 TARGET_DIR="$HOME"
 DRY_RUN=false
 FORCE=false
@@ -18,7 +18,7 @@ usage() {
     echo "  remove <package>   Remove symlinks for a package"
     echo "  list               List available packages"
     echo "Options:"
-    echo "  -d <dir>           Set dotfiles directory (default: ~/code/dotfiles)"
+    echo "  -d <dir>           Set dotfiles directory (default: directory dotfiles.sh is located)"
     echo "  -t <dir>           Set target directory (default: ~)"
     echo "  -f                 Force overwrite existing files"
     echo "  -n                 Dry run (show actions without performing them)"
