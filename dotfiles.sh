@@ -18,7 +18,7 @@ usage() {
     echo "  remove <package>   Remove symlinks for a package"
     echo "  list               List available packages"
     echo "Options:"
-    echo "  -d <dir>           Set dotfiles directory (default: ~/.dotfiles)"
+    echo "  -d <dir>           Set dotfiles directory (default: ~/code/dotfiles)"
     echo "  -t <dir>           Set target directory (default: ~)"
     echo "  -f                 Force overwrite existing files"
     echo "  -n                 Dry run (show actions without performing them)"
