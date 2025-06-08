@@ -1,0 +1,23 @@
+* {
+	font-family: "CaskaydiaMono Nerd Font";
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+window#waybar {
+	background: rgba(79, 91, 88, 0.75);
+	color: white;
+}
+
+.modules-left,
+.modules-center,
+.modules-right
+{
+	margin: 0 5px;
+	padding: 0;
+}
+
+#workspaces button.active {
+	color: white;
+}

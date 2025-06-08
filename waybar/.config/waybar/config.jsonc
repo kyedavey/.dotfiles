@@ -1,0 +1,14 @@
+{
+	"layer": "top",
+	"position": "top",
+	"reload_style_on_change": true,
+	"modules-left": ["hyprland/workspaces"],
+	"modules-center": ["clock"],
+	"modules-right": [],
+	
+	"hyprland/workspaces": {
+		"persistent-workspaces": {
+			"*": [ 1,2,3,4,5,6 ]
+		}
+	}
+}
