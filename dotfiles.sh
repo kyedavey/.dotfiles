@@ -5,7 +5,7 @@
 set -e
 
 # Default values
-DOTFILES_DIR=$(dirname "${BASH_SOURCE[0]}")
+DOTFILES_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 TARGET_DIR="$HOME"
 DRY_RUN=false
 FORCE=false
